@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Steering : MonoBehaviour
 {
-    [SerializeField] float wanderDistance = 1;
-    [SerializeField] float wanderRadius = 3;
-    [SerializeField] float wanderDisplacement = 5;
+    [SerializeField][Range(0, 5)] float wanderDistance = 1;
+    [SerializeField][Range(0, 5)] float wanderRadius = 3;
+    [SerializeField][Range(0, 45)] float wanderDisplacement = 5;
 
     float wanderAngle = 0;
 
@@ -20,6 +20,21 @@ public class Steering : MonoBehaviour
     public Vector3 Flee(AutonomousAgent agent, GameObject target)
     {
         Vector3 force = CalculateSteering(agent, agent.transform.position - target.transform.position);
+
+        return force;
+    }
+
+    public Vector3 Wander(AutonomousAgent agent)
+    {
+        wanderAngle = wanderAngle + Random.Range(-wanderDisplacement, wanderDisplacement);
+
+        Quaternion rotation = Quaternion.AngleAxis(); //takes angle and axis to rotate (use up vector) ???
+
+        Vector3 point = rotation * (Vector3.forward * wanderRadius);
+
+        Vector3 forward = agent.transform.forward * wanderDistance;
+
+        Vector3 force = CalculateSteering(agent, Vector3.forward + point);
 
         return force;
     }
