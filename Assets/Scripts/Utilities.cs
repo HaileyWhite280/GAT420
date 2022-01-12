@@ -8,14 +8,13 @@ public static class Utilities
     {
         Vector3 result = v;
 
-        //???
         if(result.x > max.x)
         {
-            result = min.x;
+            result.x = min.x;
         }
         if(result.x < min.x)
         {
-            result = max.x;
+            result.x = max.x;
         }
 
         return result;

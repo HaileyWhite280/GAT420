@@ -28,13 +28,29 @@ public class Steering : MonoBehaviour
     {
         wanderAngle = wanderAngle + Random.Range(-wanderDisplacement, wanderDisplacement);
 
-        Quaternion rotation = Quaternion.AngleAxis(); //takes angle and axis to rotate (use up vector) ???
+        Quaternion rotation = Quaternion.AngleAxis(wanderAngle, Vector3.up); //takes angle and axis to rotate (use up vector) ???
 
         Vector3 point = rotation * (Vector3.forward * wanderRadius);
 
         Vector3 forward = agent.transform.forward * wanderDistance;
 
         Vector3 force = CalculateSteering(agent, Vector3.forward + point);
+
+        return force;
+    }
+
+    public Vector3 Cohesion(AutonomousAgent agent, GameObject[] targets)
+    {
+        Vector3 centerOfTargets = Vector3.zero;
+
+        foreach(GameObject target in targets)
+        {
+            centerOfTargets += target.transform.position;
+        }
+
+        centerOfTargets /= targets.Length;
+
+        Vector3 force = CalculateSteering(agent, centerOfTargets - agent.transform.position);
 
         return force;
     }

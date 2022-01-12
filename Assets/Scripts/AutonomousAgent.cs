@@ -5,10 +5,12 @@ using UnityEngine;
 public class AutonomousAgent : Agent
 {
     [SerializeField] Perception perception;
+    [SerializeField] Perception flockPerception;
     [SerializeField] Steering steering;
+    [SerializeField] AutonomousAgentData agentData;
 
-    public float maxSpeed;
-    public float maxForce;
+    public float maxSpeed { get { return agentData.maxSpeed; } }
+    public float maxForce { get { return agentData.maxForce; } }
 
     public Vector3 velocity { get; set; } = Vector3.zero;
 
@@ -25,10 +27,18 @@ public class AutonomousAgent : Agent
         }
         if (gameObjects.Length != 0)
         {
-            Debug.DrawLine(transform.position, gameObjects[0].transform.position);
+            //Debug.DrawLine(transform.position, gameObjects[0].transform.position);
 
-            Vector3 force = steering.Seek(this, gameObjects[0]);
-            acceleration += force;
+            acceleration += steering.Seek(this, gameObjects[0]) * agentData.seekWeight;
+            acceleration += steering.Flee(this, gameObjects[0]) * agentData.fleeWeight;
+            //acceleration += force;
+        }
+
+        //flock
+        gameObjects = flockPerception.GetGameObjects();
+        if(gameObjects.Length != 0)
+        {
+            acceleration += steering.Cohesion(this, gameObjects) * agentData.cohesionWeight;
         }
 
         velocity += acceleration * Time.deltaTime;

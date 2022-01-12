@@ -14,6 +14,8 @@ public class DistancePerception : Perception
         Collider[] colliders =  Physics.OverlapSphere(transform.position, radius);
         foreach (Collider collider in colliders)
         {
+            if (collider.gameObject == gameObject) continue;
+
             if (tagName == "" || collider.CompareTag(tagName))
             {
                //Compute Angle
@@ -21,7 +23,6 @@ public class DistancePerception : Perception
                                
                 float cos = Vector3.Dot(transform.forward, direction);
 
-                //Mathf.Acos(dot) ???
                 float angle = Mathf.Acos(cos) * Mathf.Rad2Deg;
 
                 //check if angle is less or equal to max angle
