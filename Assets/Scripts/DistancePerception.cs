@@ -33,7 +33,6 @@ public class DistancePerception : Perception
             }
         }
 
-
         return result.ToArray();
     }
 }
