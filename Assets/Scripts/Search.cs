@@ -74,7 +74,6 @@ public static class Search
         return found;
     }
 
-        //will use parent in graphnodes
     public static bool BFS(GraphNode source, GraphNode destination, ref List<GraphNode> path, int maxSteps)
     {
         bool found = false;
@@ -135,6 +134,7 @@ public static class Search
         return found;
     }
 
+    //FIX ???
     public static bool Dijkstra(GraphNode source, GraphNode destination, ref List<GraphNode> path, int maxSteps)
     {
         bool found = false;
@@ -199,6 +199,7 @@ public static class Search
 
     }
 
+    //FIX ???
     public static bool AStar(GraphNode source, GraphNode destination, ref List<GraphNode> path, int maxSteps)
     {
         bool found = false;

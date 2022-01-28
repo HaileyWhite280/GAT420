@@ -51,4 +51,15 @@ public class GraphNode : Node
     {
         return Vector3.Distance(transform.position, node.transform.position);
     }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.TryGetComponent<SearchAgent>(out SearchAgent searchAgent))
+        {
+            if (searchAgent.targetNode == this)
+            {
+                searchAgent.targetNode = searchAgent.GetNextNode(this);
+            }
+        }
+    }
 }
