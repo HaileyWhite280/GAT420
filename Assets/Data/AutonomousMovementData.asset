@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc3fba6bc8db8604ba36729545b003d0, type: 3}
   m_Name: AutonomousMovementData
   m_EditorClassIdentifier: 
-  maxSpeed: 12
-  minSpeed: 6
+  maxSpeed: 0.5
+  minSpeed: 0.99
   maxForce: 60
+  turnRate: 360
   orientToMovement: 1
