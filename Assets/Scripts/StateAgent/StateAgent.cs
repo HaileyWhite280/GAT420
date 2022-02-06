@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class StateAgent : Agent
 {
+
+    public AgentPath path;
     public StateMachine stateMachine = new StateMachine();
 
     // Start is called before the first frame update
     void Start()
     {
         stateMachine.AddState(new IdleState(this, "idle"));
-        stateMachine.AddState(new IdleState(this, "patrol"));
+        stateMachine.AddState(new PatrolState(this, "patrol"));
         stateMachine.SetState(stateMachine.StateFromName("idle"));
         
     }
@@ -19,11 +21,7 @@ public class StateAgent : Agent
     void Update()
     {
         stateMachine.Update();
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            stateMachine.SetState(stateMachine.StateFromName("patrol"));
 
-        }
 
         if(movement.velocity.magnitude > 0.5f)
         {
@@ -33,5 +31,10 @@ public class StateAgent : Agent
         {
             animator.SetBool("Walk", false);
         }
+    }
+
+    private void OnGUI()
+    {
+        GUI.Label(new Rect(10, 10, 300, 20), stateMachine.GetStateName());
     }
 }
