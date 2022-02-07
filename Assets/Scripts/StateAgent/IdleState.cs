@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class IdleState : State
 {
-    float timer;
-
     public IdleState(StateAgent owner, string name) : base(owner, name)
     {
 
@@ -13,8 +11,9 @@ public class IdleState : State
 
     public override void OnEnter()
     {
-        timer = 2;
+        owner.movement.Stop();
         Debug.Log(name + "enter");
+        owner.timer.value = 2;
 
     }
 
@@ -27,12 +26,6 @@ public class IdleState : State
     {
         Debug.Log(name + "update");
 
-        timer -= Time.deltaTime;
-        if (timer <= 0)
-        {
-            owner.stateMachine.SetState(owner.stateMachine.StateFromName("patrol"));
-
-        }
     }
 
 }
