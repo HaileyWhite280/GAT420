@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 2089577651430802773}
   - component: {fileID: -8160815298318898356}
   - component: {fileID: 8221926384300223610}
-  - component: {fileID: -3953661148595079273}
   - component: {fileID: -8802762073977786355}
   - component: {fileID: -8602063875734384951}
+  - component: {fileID: 4934924678536615632}
   m_Layer: 0
   m_Name: StateAgent
   m_TagString: SearchAgent
@@ -133,20 +133,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: {fileID: -8802762073977786355}
   animator: {fileID: 0}
-  path: {fileID: 0}
---- !u!114 &-3953661148595079273
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2089577651430802762}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef5933063378aa0488d4eee44d17f1f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pathNodes: {fileID: 0}
+  perception: {fileID: 0}
+  pathFollower: {fileID: 0}
+  enemySeen:
+    value: 0
+  health:
+    value: 0
+  timer:
+    value: 0
 --- !u!114 &-8802762073977786355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,6 +176,23 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &4934924678536615632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2089577651430802762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a0a9df4503d03c45a37dfb0d2c8e5e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagName: Player
+  raycastTransform: {fileID: 3819116649155902483}
+  distance: 1
+  angle: 0
+  numRaycast: 2
 --- !u!1 &7681770781448505859
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,7 +217,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7681770781448505859}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.65}
+  m_LocalPosition: {x: 0, y: 0, z: 0.63}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2089577651430802768}

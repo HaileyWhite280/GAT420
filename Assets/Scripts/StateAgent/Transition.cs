@@ -8,7 +8,8 @@ public abstract class Transition
 	{
 		EQUAL,
 		LESS,
-		GREATER
+		GREATER,
+		LESS_EQUAL
 	}
 
 	public abstract bool ToTransition();
