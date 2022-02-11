@@ -18,11 +18,9 @@ public class AttackState : State
 
     public override void OnExit()
     {
-        throw new System.NotImplementedException();
     }
 
     public override void OnUpdate()
     {
-        throw new System.NotImplementedException();
     }
 }
