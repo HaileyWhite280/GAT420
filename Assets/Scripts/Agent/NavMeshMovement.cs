@@ -34,6 +34,12 @@ public class NavMeshMovement : Movement
         navMeshAgent.isStopped = true;
     }
 
+    public override Vector3 destination 
+    {
+        get => navMeshAgent.destination;
+        set => navMeshAgent.destination = value;
+    }
+
     // Start is called before the first frame update
     void Start()
     {

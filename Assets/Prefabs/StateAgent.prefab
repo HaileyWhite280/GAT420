@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: -8602063875734384951}
   - component: {fileID: 5808183302906289456}
   - component: {fileID: 2097734447}
+  - component: {fileID: -3144766889871243080}
   m_Layer: 0
   m_Name: StateAgent
   m_TagString: SearchAgent
@@ -157,6 +158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementData: {fileID: 11400000, guid: 56ed29175e9925b42afc1ec7ed3d2af1, type: 2}
+  navMeshAgent: {fileID: 0}
 --- !u!195 &-8602063875734384951
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -192,11 +194,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tagName: Player
-  distance: 5
+  distance: 8
   angle: 80
   raycastTransform: {fileID: 3819116649155902483}
-  numRaycast: 20
-  radius: 0.2
+  numRaycast: 30
+  radius: 0.5
 --- !u!114 &2097734447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,6 +212,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathNodes: {fileID: 0}
+  pathName: 
+--- !u!114 &-3144766889871243080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2089577651430802762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdc7d910749489147911e8449ad4413b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagName: 
+  distance: 3
+  damage: 20
 --- !u!1 &7681770781448505859
 GameObject:
   m_ObjectHideFlags: 0

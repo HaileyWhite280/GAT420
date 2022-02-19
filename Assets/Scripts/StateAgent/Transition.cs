@@ -8,7 +8,8 @@ public class Transition
 
     public Transition(Condition[] conditions)
     {
-        conditions = this.conditions;
+        //conditions = this.conditions;
+        this.conditions = conditions;
     }
 
     public bool ToTransition()
