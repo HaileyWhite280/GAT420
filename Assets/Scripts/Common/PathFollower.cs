@@ -5,15 +5,28 @@ using UnityEngine;
 public class PathFollower : MonoBehaviour
 {
     public Path pathNodes;
+	public string pathName;
+
     public Node targetNode { get; set; }
 	public bool complete { get => targetNode == null; }
-	public string pathName;
 
 	public static Path GetPathByName(string name)
     {
+		/*		var paths = GameObject.FindObjectsOfType<Path>();
+
+				foreach(var path in paths)
+				{
+					if(path.name.ToLower() == name.ToLower())
+					{
+						return path;
+					}
+				}
+
+				return null;*/
+
 		var paths = GameObject.FindObjectsOfType<Path>();
 
-		foreach(var path in paths)
+		foreach( var path in paths)
         {
 			if(path.name.ToLower() == name.ToLower())
             {
@@ -26,6 +39,10 @@ public class PathFollower : MonoBehaviour
 
 	public static Path GetRandomPath()
     {
+		/*		var paths = GameObject.FindObjectsOfType<Path>();
+
+				return paths[Random.Range(0, paths.Length)];*/
+
 		var paths = GameObject.FindObjectsOfType<Path>();
 
 		return paths[Random.Range(0, paths.Length)];

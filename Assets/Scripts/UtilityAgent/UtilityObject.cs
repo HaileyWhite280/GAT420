@@ -13,17 +13,35 @@ public class UtilityObject : MonoBehaviour
 
     public float duration;
     public Transform location;
+    [SerializeField] MeterUI meterPref;
 
     public Effector[] effectors;
     public Dictionary<Need.Type, float> registry = new Dictionary<Need.Type, float>();
 
+    public float score { get; set; }
+    public bool visible { get; set; }
+
+    MeterUI meter;
+
     // Start is called before the first frame update
     void Start()
     {
+        meter = Instantiate(meterPref, GameObject.Find("Canvas").transform);
+        meter.name = name;
+        meter.text.text = name;
+
         foreach(var effector in effectors)
         {
             registry[effector.type] = effector.change;
         }
+    }
+
+    private void LateUpdate()
+    {
+        meter.gameObject.SetActive(visible);
+        meter.worldPosition = transform.position + (Vector3.up * 2);
+        meter.slider.value = score;
+        visible = false;
     }
 
     public float GetEffectorChange(Need.Type type)

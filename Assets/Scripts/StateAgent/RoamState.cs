@@ -11,15 +11,15 @@ public class RoamState : State
 
     public override void OnEnter()
     {
-/*        Quaternion rotation = Quaternion.AngleAxis(Random.Range(-90, 90), owner.transform.position.y);
+        Quaternion rotation = Quaternion.AngleAxis(Random.Range(-90, 90), Vector3.up);
 
-        Vector3 forward = owner.transform.forward * rotation;
+        Vector3 forward = rotation * owner.transform.forward;
 
-        Vector3 destination = owner.transform.position + forward + Random.Range(10f, 15f);
+        Vector3 destination = owner.transform.position + (forward * Random.Range(10f, 15f));
 
         owner.movement.MoveTowards(destination);
         owner.movement.Resume();
-        owner.atDestination.value = false;*/
+        owner.atDestination.value = false;
 
     }
 
@@ -32,6 +32,11 @@ public class RoamState : State
     {
 /*        //if distance between owner.transform.position && movement destination <= 1.5
         owner.atDestination.value = true;*/
+
+        if(Vector3.Distance(owner.transform.position, owner.movement.destination) <= 1.5)
+        {
+            owner.atDestination.value = true;
+        }
     }
 
 }

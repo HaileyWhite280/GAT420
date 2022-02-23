@@ -32,7 +32,7 @@ public class StateMachine
 
         currentState?.OnExit();
         currentState = newState;
-        newState.OnExit();
+        newState.OnEnter();
     }
 
     public void AddState(State state)
