@@ -101,7 +101,7 @@ public class UtilityAgent : Agent
             utilityObject.effect.SetActive(false);
         }
 
-        //
+        
         ApplyUtilityObject(utilityObject);
 
         activeUtilityObject = null;
@@ -138,6 +138,52 @@ public class UtilityAgent : Agent
         }
 
         return score;
+    }
+
+    UtilityObject GetHighestUtilityObject(UtilityObject[] utilityObjects)
+    {
+        UtilityObject highestUtilityObject = null;
+        float highestScore = MIN_SCORE;
+
+        foreach(var utilityObject in utilityObjects)
+        {
+            var utilityScore = GetUtilityObjectScore(utilityObject);
+            if(utilityScore > highestScore)
+            {
+                highestUtilityObject = utilityObject;
+            }
+        }
+
+        return highestUtilityObject;
+    }
+
+    UtilityObject GetRandomUtilityObject(UtilityObject[] utilityObjects)
+    {
+        float[] scores = new float[utilityObjects.Length];
+        float totalScore = 0;
+
+        for (int i = 0; i < utilityObjects.Length; i++)
+        {
+            var utilityScore = GetUtilityObjectScore(utilityObjects[i]);
+            scores[i] = utilityScore;
+            totalScore += scores[i];
+        }
+
+        //select random utility object based on score
+        //higher the score higher chance of being randomly selected
+
+        float random = Random.Range(0, totalScore);
+        for(int i = 0; i < scores.Length; i++)
+        {
+            if(random < scores[i])
+            {
+                return utilityObjects[i];
+            }
+
+            random -= scores[i];
+        }
+
+        return null;
     }
 
     Need GetNeedByType(Need.Type type)
