@@ -24,7 +24,7 @@ public class UtilityObject : MonoBehaviour
 
     MeterUI meter;
 
-    // Start is called before the first frame update
+    // Start is called before the first frame update 
     void Start()
     {
         meter = Instantiate(meterPref, GameObject.Find("Canvas").transform);

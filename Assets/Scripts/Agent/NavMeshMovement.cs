@@ -16,7 +16,7 @@ public class NavMeshMovement : Movement
 
     public override void ApplyForce(Vector3 force)
     {
-
+        //???
     }
 
     public override void MoveTowards(Vector3 target)
@@ -43,7 +43,7 @@ public class NavMeshMovement : Movement
     // Start is called before the first frame update
     void Start()
     {
-        navMeshAgent = GetComponent<NavMeshAgent>(); //???
+        navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
     // Update is called once per frame

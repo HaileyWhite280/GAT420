@@ -28,7 +28,7 @@ public class Steering : MonoBehaviour
     {
         wanderAngle = wanderAngle + Random.Range(-wanderDisplacement, wanderDisplacement);
 
-        Quaternion rotation = Quaternion.AngleAxis(wanderAngle, Vector3.up); //takes angle and axis to rotate (use up vector) ???
+        Quaternion rotation = Quaternion.AngleAxis(wanderAngle, Vector3.up);
 
         Vector3 point = rotation * (Vector3.forward * wanderRadius);
 

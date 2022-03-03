@@ -37,9 +37,9 @@ public class UtilityAgent : Agent
 
     void Update()
     {
-/*        animator.SetFloat("speed, movement.velocity.magnitude");*/
+        animator.SetFloat("Speed", movement.velocity.magnitude);
 
-        if(activeUtilityObject == null)
+        if (activeUtilityObject == null)
         {
             var gameObjs = perception.GetGameObjects();
 
@@ -78,8 +78,9 @@ public class UtilityAgent : Agent
         //go to location
         movement.MoveTowards(utilityObject.location.position);
 
-        while(Vector3.Distance(transform.position, utilityObject.location.position) > 0.25f)
+        while(Vector3.Distance(transform.position, utilityObject.location.position) > 0.6f)
         {
+            print(Vector3.Distance(transform.position, utilityObject.location.position));
             Debug.DrawLine(transform.position, utilityObject.location.position);
 
             yield return null;
@@ -171,7 +172,6 @@ public class UtilityAgent : Agent
 
         //select random utility object based on score
         //higher the score higher chance of being randomly selected
-
         float random = Random.Range(0, totalScore);
         for(int i = 0; i < scores.Length; i++)
         {
